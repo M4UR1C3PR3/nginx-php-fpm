@@ -33,7 +33,7 @@ if [ "$FORCE_GIT_PULL" == "1" || ! -d "/var/www/html/.git" ]; then
  # Pull down code from git for our site!
  if [ ! -z "$GIT_REPO" ]; then
    # Clear full directory
-   rm -Rf /var/www/html/*
+   rm -Rf /var/www/html
    if [ ! -z "$GIT_BRANCH" ]; then
      git clone -b $GIT_BRANCH $GIT_REPO /var/www/html
    else
