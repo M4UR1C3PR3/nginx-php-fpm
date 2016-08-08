@@ -46,8 +46,6 @@ fi
 
 # Install Composer project
 if [[ "$COMPOSER_INSTALL" == "1" ]] ; then
- # Download Composer from getcomposer.org
- curl https://getcomposer.org/composer.phar -O /var/www/html/composer.phar
  # TODO: Make installation
 fi
 
