@@ -32,8 +32,8 @@ fi
 if [ "$FORCE_GIT_PULL" == "1" || ! -d "/var/www/html/.git" ]; then
  # Pull down code from git for our site!
  if [ ! -z "$GIT_REPO" ]; then
-   # Remove the test index file
-   rm -Rf /var/www/html/index.php
+   # Clear full directory
+   rm -Rf /var/www/html/*
    if [ ! -z "$GIT_BRANCH" ]; then
      git clone -b $GIT_BRANCH $GIT_REPO /var/www/html
    else
@@ -42,6 +42,13 @@ if [ "$FORCE_GIT_PULL" == "1" || ! -d "/var/www/html/.git" ]; then
    chown -Rf nginx.nginx /var/www/html
    chown -Rf nginx.nginx $webroot
  fi
+fi
+
+# Install Composer project
+if [[ "$COMPOSER_INSTALL" == "1" ]] ; then
+ # Download Composer from getcomposer.org
+ curl https://getcomposer.org/composer.phar -O /var/www/html/composer.phar
+ # TODO: Make installation
 fi
 
 # Display PHP error's or not
